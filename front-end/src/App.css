@@ -1,38 +1,256 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap');
+* {
+    font-family: 'Gabarito', cursive;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--color-1);
+}
+:root {
+    --color-1: #8ecae6;
+}
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 18px 0;
+    text-transform: uppercase;
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    z-index: 99;
+}
+header .brand {
+    font-size: 24px;
+    font-weight: bold;
+}
+header .brand span {
+    color: var(--color-1);
+}
+header .menuButton {
+    display: none;
+}
+.links a{
+    font-weight: 700;
+    margin: 0 6px;
+    color: black;
+    padding-bottom: 2px;
+}
+.links a:hover {
+    border-bottom: 4px solid var(--color-1);
+}
+.links button {
+    background: var(--color-1);
+    color: white;
+    border: 0;
+    outline: 0;
+    padding: 12px 20px;
+    border-radius: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+.home {
+    position: relative;
+    top: 70px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+.leftSide {
+    width: 50%;
+}
+.homeIntro {
+    font-size: 30px;
+    font-weight: bold;
+}
+.homeIntro span {
+    color: var(--color-1);
+}
+.leftSide button {
+    background: var(--color-1);
+    color: white;
+    padding: 13px 20px;
+    border-radius: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-size: 14px;
+    border: 0;
+    outline: 0;
+}
+.homePreIntro {
+    font-size: 18px;
+    margin: 10px 0;
+    letter-spacing: 1px;
+}
+.rightSide {
+    width: 50%;
+}
+.rightSide img {
+    width: 90%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* containerForm */
+.containerForm {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.containerForm form {
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    padding: 40px 20px;
+    width: 600px;
+}
+.containerForm form h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+input , textarea {
+    padding: 12px;
+    width: 100%;
+    outline: 0;
+    margin-bottom: 5px;
+    border: 2px solid #e6e6e6;
+}
+input:focus , textarea:focus {
+    border: 2px solid var(--color-1);
+}
+button {
+    padding: 12px;
+    margin-bottom: 5px;
+    background-color: var(--color-1);
+    color: white;
+    outline: 0;
+    cursor: pointer;
+    font-weight: bold;
+    border: 0;
+}
+form button {
+    width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* conatct */
+.contact {
+    display: flex;
+    align-items: center;
+}
+.leftSideContact {
+    width: 50%;
+}
+.leftSideContact img{
+    width: 90%;
+}
+.rightSideContact {
+    width: 45%;
+    margin: 0 auto;
+}
+.rightSideContact h2 {
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.rightSideContact h2 span {
+    color: var(--color-1);
+}
+.rightSideContact form input , .rightSideContact form textarea {
+    padding: 13px;
+    outline: 0;
+    border: 2px solid #e6e6e6;
+    width: 100%;
+    background-color: transparent;
+    margin: 0 0 5px 0;
+}
+.rightSideContact form input:focus , .rightSideContact form textarea:focus {
+    border: 2px solid var(--color-1);
+}
+.rightSideContact form button {
+    background-color: var(--color-1);
+    padding: 12px;
+    outline: 0;
+    border: 0;
+    width: 100%;
+    color: white;
+}
+
+/* footer */
+footer {
+    background-color: var(--color-1);
+    padding: 15px 0;
+    text-align: center;
+    color: white;
+    font-size: 17px;
+}
+
+.loader2 , .loader1 {
+    width: 15px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    animation: l5 1s infinite linear alternate;
+    margin: 10px 0;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  @keyframes l5 {
+      0%  {box-shadow: 20px 0 #000, -20px 0 #0002;background: #000 }
+      33% {box-shadow: 20px 0 #000, -20px 0 #0002;background: #0002}
+      66% {box-shadow: 20px 0 #0002,-20px 0 #000; background: #0002}
+      100%{box-shadow: 20px 0 #0002,-20px 0 #000; background: #000 }
   }
-  to {
-    transform: rotate(360deg);
-  }
+
+.services {
+    position: relative;
+    top: 100px;
+}
+.services h3 {
+    color: var(--color-1);
+    text-align: center;
+}
+.services h1 {
+    font-size: 35px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.services p {
+    text-align: center;
+    color: gray;
+    width: 45%;
+    margin: 5px auto;
+}
+.cardsServices {
+    width: 80%;
+    margin: 35px auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.cardService {
+    width: 30%;
+    margin: 10px auto;
+    border: 3px solid var(--color-1);
+    text-align: center;
+    padding: 35px 10px;
+}
+.cardService i {
+    font-size: 50px;
+    color: var(--color-1);
+}
+.serviceTitle {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.cardService p{
+    width: 100%;
+    letter-spacing: 1px;
 }

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\ActivityController;
+use App\Http\Controllers\Api\UserActivityController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function(){
+    Route::post('/logout',[UserController::class,'logout']);
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
 });
+
+Route::post('/signup',[UserController::class,'signup']);
+Route::post('/signin',[UserController::class,'signin']);
+
+Route::resource('activities', ActivityController::class);
+Route::resource('userActivities', UserActivityController::class);
