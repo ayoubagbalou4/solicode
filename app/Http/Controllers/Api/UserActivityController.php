@@ -10,16 +10,18 @@ class UserActivityController extends Controller
 {
     public function index()
     {
-        $userActivitys = UserActivity::all();
+        $userActivities = UserActivity::with('activity')
+            ->orderBy('created_at')
+            ->get();
         return response()->json([
-            'userActivitys' => $userActivitys
-        ],200);
+            'userActivities' => $userActivities
+        ], 200);
     }
 
     public function store(Request $request)
     {
         UserActivity::create($request->all());
-        return response()->json([],200);
+        return response()->json([], 200);
     }
 
     public function show($id)
@@ -27,24 +29,22 @@ class UserActivityController extends Controller
         $userActivity = UserActivity::findOrFail($id);
         return response()->json([
             'userActivity' => $userActivity
-        ],200);
+        ], 200);
     }
 
     public function destroy($id)
     {
         UserActivity::findOrFail($id)->delete();
-        return response('',200);
+        return response('', 200);
     }
 
-    public function update(Request $request, $id)
+    public function consomationParMois()
     {
-        $userActivity = UserActivity::findOrFail($id);
-        $userActivity->update([
-            'user_id' => $request->user_id,
-           'activity_id' => $request->activity_id,
-           'etat' => $request->etat,
+        $stats = UserActivity::selectRaw('MONTHNAME(created_at) as month, SUM(consomation) as consomation')
+            ->groupBy('month')
+            ->get();
 
-        ]);
-        return response()->json([],200);
+        return response()->json($stats, 200);
+
     }
 }

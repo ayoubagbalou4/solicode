@@ -14,7 +14,7 @@ const Conseils = () => {
                 <div className="cardsServices">
                     {data.map((e, index) => (
                         <div key={index} className="cardService">
-                            <i className="fa-solid fa-palette"></i>
+                            <i className={e.icon}></i>
                             <div className="serviceTitle">{e.titre}</div>
                             <p>{e.conseil}</p>
                         </div>

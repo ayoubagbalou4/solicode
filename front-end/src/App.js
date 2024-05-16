@@ -11,6 +11,9 @@ import UserActivities from './admin/UserActivities';
 import AddUserActivity from './admin/AddUserActivity';
 import EditUserActivity from './admin/EditUserActivity';
 import Conseils from './pages/Conseils';
+import Dashboard from './admin/Dashboard';
+import Bonus from './admin/Bonus';
+import ConsomationParMois from './admin/ConsomationParMois';
 
 const App = () => {
 
@@ -21,12 +24,14 @@ const App = () => {
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/conseils' element={<Conseils />} />
-                <Route path='/dashboard' element={<Layout />} />
+                <Route path='/admin/dashboard' element={<Dashboard />} />
+                <Route path='/admin/bonus' element={<Bonus />} />
 
                 <Route path='/admin/activities' element={<Activities />} />
                 <Route path='/admin/add-activity' element={<AddActivity />} />
                 <Route path='/admin/edit-activity/:id' element={<EditActivity />} />
 
+                <Route path='/admin/ConsomationParMois' element={<ConsomationParMois />} />
 
                 <Route path='/admin/userActivities' element={<UserActivities />} />
                 <Route path='/admin/add-userActivity' element={<AddUserActivity />} />

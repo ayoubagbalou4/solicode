@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Activity;
 use App\Models\User;
+use App\Models\UserActivity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -84,6 +86,21 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->update($request->all());
         return response()->json([], 200);
+    }
+
+    public function getCounts(){
+
+        $stats = UserActivity::selectRaw('DATE(created_at) as date, SUM(consomation) as consomation')
+                 ->groupBy('date')
+                 ->get();
+
+        return response()->json([
+            'activities' => Activity::count(),
+            'user_activities' => UserActivity::count(),
+            'points' => UserActivity::sum('points'),
+            'consomation' => UserActivity::sum('consomation'),
+            'stats' => $stats,
+        ], 200);
     }
 
 

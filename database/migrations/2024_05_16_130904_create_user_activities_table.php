@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('user_activities', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->string('user_id')->nullable();
             $table->foreignId('activity_id')->constrained('activities');
             $table->integer('duree_par_min');
             $table->integer('nbr_fois');

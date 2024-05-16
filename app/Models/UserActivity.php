@@ -10,4 +10,8 @@ class UserActivity extends Model
     use HasFactory;
     protected $guarded = [];
 
+    public function activity(){
+        return $this->belongsTo(Activity::class);
+    }
+
 }

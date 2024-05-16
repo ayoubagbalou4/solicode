@@ -63,14 +63,12 @@ const Activities = () => {
                         <table className='table'>
                             <tr>
                                 <th>nom</th>
-                                <th>debut_activity</th>
                                 <th>actions</th>
                             </tr>
                             {
                                 activities.map((activity, index) => (
                                     <tr key={index}>
                                         <td>{activity.nom}</td>
-                                        <td>{activity.debut_activity}</td>
                                         <td>
                                             <button onClick={() => deleteActivityConfirm(activity.id)} className='delete'>Delete</button>
                                             <Link to={`/admin/edit-activity/${activity.id}`}><button className='update'>Update</button></Link>

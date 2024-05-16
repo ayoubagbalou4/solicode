@@ -44,10 +44,6 @@ const AddActivity = () => {
                             <p>nom</p>
                             <input onChange={handleActivity} name='nom' type="text" placeholder="Nom" required />
                         </div>
-                        <div>
-                            <p>debut activity</p>
-                            <input onChange={handleActivity} name='debut_activity' type="text" placeholder="debut_activity" required />
-                        </div>
 
                         {
                             !loadingAddActivity &&

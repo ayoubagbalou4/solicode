@@ -63,10 +63,6 @@ const EditActivity = () => {
                                 <p>nom</p>
                                 <input value={activitiesData.nom} onChange={handleActivity} name='nom' type="text" placeholder="Nom" required />
                             </div>
-                            <div>
-                                <p>consomation</p>
-                                <input value={activitiesData.consomation} onChange={handleActivity} name='consomation' type="text" placeholder="Consomation" required />
-                            </div>
                             {
                                 !loadingEditActivity &&
                                 <button>Edit Activity</button>

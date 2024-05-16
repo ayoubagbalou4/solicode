@@ -29,3 +29,5 @@ Route::post('/signin',[UserController::class,'signin']);
 
 Route::resource('activities', ActivityController::class);
 Route::resource('userActivities', UserActivityController::class);
+Route::get('/getcounts',[UserController::class,'getCounts']);
+Route::get('/consomationParMois', [UserActivityController::class,'consomationParMois']);

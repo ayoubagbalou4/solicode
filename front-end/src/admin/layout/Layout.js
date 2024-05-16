@@ -10,21 +10,9 @@ const Layout = (props) => {
     const [loadingLogout, setLoadingLogout] = useState(false)
 
     const logout = async () => {
-        setLoadingLogout(true)
-        try {
-            await axios.post('http://127.0.0.1:8000/api/logout', null, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('tokenSportsClubsManagement')}`
-                }
-            })
-            localStorage.removeItem('userSportsClubsManagement')
-            localStorage.removeItem('tokenSportsClubsManagement')
-            nav('/')
-            setLoadingLogout(false)
-        } catch (error) {
-            console.error(error);
-            setLoadingLogout(false)
-        }
+        localStorage.removeItem('userSportsClubsManagement')
+        localStorage.removeItem('tokenSportsClubsManagement')
+        nav('/')
     }
 
     return (
@@ -33,9 +21,11 @@ const Layout = (props) => {
                 <div className="brand">Aqua<span>Smart</span></div>
                 <div className="linksSide">
                     <Link className={props.dashboard} to="/admin/dashboard"><i className="fa-solid fa-house-chimney"></i> Dashboard</Link>
-                    <Link className={props.users} to="/admin/users"><i className="fa-solid fa-users"></i> Users</Link>
-                    {/* <Link className={props.activities} to="/admin/activities"><i class="fa-solid fa-flag"></i> Activities</Link> */}
-                    <Link className={props.userActivities} to="/admin/userActivities"><i class="fa-solid fa-flag"></i> User Activities</Link>
+                    {/* <Link className={props.users} to="/admin/users"><i className="fa-solid fa-users"></i> Users</Link> */}
+                    <Link className={props.activities} to="/admin/activities"><i class="fa-solid fa-flag"></i> Activities</Link>
+                    <Link className={props.userActivities} to="/admin/userActivities"><i class="fa-brands fa-product-hunt"></i> User Activities</Link>
+                    <Link className={props.consomationParMois} to="/admin/ConsomationParMois"><i class="fa-solid fa-flag"></i> Consomation Par Mois</Link>
+                    <Link className={props.Bonus} to="/admin/Bonus"><i class="fa-solid fa-layer-group"></i> Bonus</Link>
                 </div>
             </div>
             <div className="main">
@@ -49,7 +39,6 @@ const Layout = (props) => {
                     openMenuClick &&
                     <div className="menuClick">
                         <Link onClick={logout}><i className="fa-solid fa-power-off"></i> Logout</Link>
-                        <Link className={props.activities} to="/admin/activities"><i class="fa-solid fa-flag"></i> Activities</Link>
                     </div>
                 }
                 <div className="content">

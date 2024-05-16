@@ -17,8 +17,16 @@ const AddUserActivity = () => {
     const addUserActivity = async (e) => {
         e.preventDefault()
         setLoadingAddUserActivity(true)
+        const data = {
+            activity_id: userActivitiesData.activity_id,
+            duree_par_min: userActivitiesData.duree_par_min,
+            nbr_fois: userActivitiesData.nbr_fois,
+            consomation: userActivitiesData.duree_par_min * 0.2 * userActivitiesData.nbr_fois,
+            points: 10 - userActivitiesData.duree_par_min * 0.2 * userActivitiesData.nbr_fois,
+            ideal_rate: '10',
+        }
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/userActivities', userActivitiesData)
+            const response = await axios.post('http://127.0.0.1:8000/api/userActivities', data)
             setLoadingAddUserActivity(false)
             navigate('/admin/userActivities')
             Swal.fire({
@@ -82,15 +90,15 @@ const AddUserActivity = () => {
                         </div>
                         <div>
                             <p>consomation</p>
-                            <input onChange={handleUserActivity} name='consomation' placeholder='consomation' required  />
+                            <input value={userActivitiesData.duree_par_min * 0.2 * userActivitiesData.nbr_fois} onChange={handleUserActivity} name='consomation' placeholder='consomation' required  />
                         </div>
                         <div>
                             <p>points</p>
-                            <input onChange={handleUserActivity} name='points' placeholder='points' required  />
+                            <input value={ 10 - (userActivitiesData.duree_par_min * 0.2) * userActivitiesData.nbr_fois } name='points' placeholder='points' disabled readOnly  />
                         </div>
                         <div>
                             <p>ideal_rate</p>
-                            <input onChange={handleUserActivity} name='ideal_rate' placeholder='ideal_rate' required  />
+                            <input value={'10 L'} onChange={handleUserActivity} name='ideal_rate' placeholder='ideal_rate'  disabled readOnly/>
                         </div>
                         {
                             !loadingAddUserActivity &&
